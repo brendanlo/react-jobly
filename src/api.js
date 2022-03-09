@@ -50,14 +50,9 @@ class JoblyApi {
    * Can optionally provide search term on company name.
    */
 
-  static async getCompanies(name) {
-    let res;
-    if (name === undefined) {
-      res = await this.request(`companies`);
-    }
-    else {
-      res = await this.request(`companies`, { name: name });
-    }
+  static async getCompanies(searchName) {
+    const nameFilter = (searchName) ? { name: searchName } : {};
+    let res = await this.request(`companies`, nameFilter);
     return res.companies;
   }
 
@@ -65,11 +60,14 @@ class JoblyApi {
    * Can optionally provide search term on job title. 
    * */
 
-  static async getJobs(title) {
-    const titleFilter = (title) ? { title: title } : {};
+  static async getJobs(searchTitle) {
+    const titleFilter = (searchTitle) ? { title: searchTitle } : {};
     let res = await this.request(`jobs`, titleFilter);
-    return res.companies;
+    return res.jobs;
   }
 
 
 }
+
+
+export default JoblyApi;

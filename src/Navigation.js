@@ -1,11 +1,15 @@
 import { NavLink } from "react-router-dom";
 
+
 function Navigation() {
+  console.log("<Navigation>");
+
   return (
-    <div className='Navigation'>
-      <NavLink to='/companies'>Companies</NavLink>
-      <NavLink to='/jobs'>Jobs</NavLink>
-    </div>
+    <nav className='Navigation'>
+      <NavLink exact to='/'> Jobly </NavLink>
+      <NavLink exact to='/companies'> Companies </NavLink>
+      <NavLink exact to='/jobs'> Jobs </NavLink>
+    </nav>
   );
 }
 
