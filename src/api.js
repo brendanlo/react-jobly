@@ -50,6 +50,12 @@ class JoblyApi {
    * Can optionally provide search term on company name.
    */
 
+
+  // static async getCompanies() {
+  //   let res = await this.request(`companies`);
+  //   console.log("getCompanies(), res.companies =", res.companies);
+  //   return res.companies;
+  // }
   static async getCompanies(searchName) {
     const nameFilter = (searchName) ? { name: searchName } : {};
     let res = await this.request(`companies`, nameFilter);
