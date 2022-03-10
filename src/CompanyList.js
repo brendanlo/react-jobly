@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import JoblyApi from "./api.js";
+import JoblyApi from "./api";
+import SearchForm from './SearchForm';
 
 /** CompanyList displays the list of all companies or a filtered list of 
  * companies if a company search has been made.
@@ -46,27 +47,32 @@ function CompanyList() {
   async function handleSearch(companySearch) {
     // fetch only the companies that contain the searchTerm
     const result = await JoblyApi.getCompanies(companySearch);
-    setCompanies(result.data);
+    setCompanies(result);
   }
 
 
   return (
     <div className="CompanyList">
       <h1> Companies List!</h1>
-      <div> search bar here</div>
-      {/* <div className="CompanyList-companies"> */}
-      {companies.map(company => {
-        return (
-          <Link to={`/company/'${company.name}>`} key={company.handle}>
-            <h3> {company.name} </h3>
-            <p> {company.description} </p>
-            <img
-              src={`${process.env.PUBLIC_URL}/${company.logoUrl}`}
-              alt={company.name} />
-          </Link>
-        )
-      })}
-      {/* </div> */}
+      <div className="CompanyList-search">
+        <SearchForm handleSearch={handleSearch} />
+      </div>
+      <div className="CompanyList-companies">
+        {(companies.length > 0)
+          ? companies.map(company => {
+            return (
+              <Link to={`/company/'${company.name}>`} key={company.handle}>
+                <h3> {company.name} </h3>
+                <p> {company.description} </p>
+                <img
+                  src={process.env.PUBLIC_URL + company.logoUrl}
+                  alt={company.name} />
+              </Link>
+            )
+          })
+          : <p>No companies found</p>
+        }
+      </div>
     </div >
   )
 

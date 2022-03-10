@@ -57,7 +57,8 @@ class JoblyApi {
   //   return res.companies;
   // }
   static async getCompanies(searchName) {
-    const nameFilter = (searchName) ? { name: searchName } : {};
+    console.log("getCompanies(), searchName = ", searchName);
+    let nameFilter = (searchName) ? { name: searchName } : {};
     let res = await this.request(`companies`, nameFilter);
     return res.companies;
   }
@@ -67,11 +68,11 @@ class JoblyApi {
    * */
 
   static async getJobs(searchTitle) {
+    console.log("getJobs(), searchTitle = ", searchTitle);
     const titleFilter = (searchTitle) ? { title: searchTitle } : {};
     let res = await this.request(`jobs`, titleFilter);
     return res.jobs;
   }
-
 
 }
 
