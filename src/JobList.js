@@ -24,6 +24,7 @@ import JobCard from "./JobCard";
  * 
  * Routes -> JobList -> (JobCard, SearchForm)
  */
+
 function JobList() {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

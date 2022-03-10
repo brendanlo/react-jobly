@@ -9,7 +9,9 @@ import JobCard from './JobCard';
  * - none
  * 
  * State: 
- * - 
+ * - company: object containing company information
+ * - jobs: array of job objects
+ * - isLoading: boolean representing whether the company and job data has loaded
  * 
  * Routes -> CompanyDetail -> JobCard
  */
@@ -28,6 +30,7 @@ function CompanyDetail() {
 
       const allJobsResult = await JoblyApi.getJobs();
       console.log("allJobsResult", allJobsResult)
+      // filter all jobs down to those that match the company name
       setJobs(allJobsResult.filter(job => job.companyHandle === name));
 
       setIsLoading(false);
