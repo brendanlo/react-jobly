@@ -47,6 +47,8 @@ function CompanyList() {
 
 
   // handles updating the searchTerm state when the search form is run
+  // CR searchTerm rather than current name - be more specific about it being a term
+  // CR review solution on how to combine fetchAllCompanies & handleSearch
   async function handleSearch(companySearch) {
     // fetch only the companies that contain the searchTerm
     const result = await JoblyApi.getCompanies(companySearch);

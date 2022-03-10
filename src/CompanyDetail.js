@@ -27,7 +27,9 @@ function CompanyDetail() {
     async function fetchCompanyAndJobs() {
       const companyResult = await JoblyApi.getCompany(name);
       setCompany(companyResult);
+      console.log(companyResult);
 
+      //CR don't need the all jobs call, this info is inside companyResult
       const allJobsResult = await JoblyApi.getJobs();
       console.log("allJobsResult", allJobsResult)
       // filter all jobs down to those that match the company name
@@ -36,7 +38,7 @@ function CompanyDetail() {
       setIsLoading(false);
     }
     fetchCompanyAndJobs();
-  }, []);
+  }, [name]);
 
   if (isLoading) return <p>Loading...</p>
 

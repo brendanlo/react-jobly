@@ -18,6 +18,8 @@ import { Link } from 'react-router-dom';
  * 
  * CompanyList -> CompanyCard
  */
+
+//CR destructure company object
 function CompanyCard({ company }) {
   return (
     <div className='CompanyCard'>

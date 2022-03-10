@@ -10,7 +10,7 @@ import JobCard from "./JobCard";
  * - None
  * 
  * State:
- * - jobs: an array of company objects
+ * - jobs: an array of job objects
  * [{
       "id": 1,
       "title": "Conservator, furniture",
@@ -20,7 +20,7 @@ import JobCard from "./JobCard";
       "companyName": "Watson-Davis"
     },
     ...]
- * - isLoading: boolean representing whether the company data has been loaded
+ * - isLoading: boolean representing whether the job data has been loaded
  * 
  * Routes -> JobList -> (JobCard, SearchForm)
  */

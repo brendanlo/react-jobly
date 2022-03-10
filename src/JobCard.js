@@ -1,5 +1,7 @@
 
+//CR docstring
 
+// CR descructure the job object for clarity
 function JobCard({ job }) {
   return (
     <div className="JobCard">
