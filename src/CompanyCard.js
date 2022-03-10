@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 function CompanyCard({ company }) {
   return (
     <div className='CompanyCard'>
-      <Link to={`/company/'${company.name}>`} key={company.handle}>
+      <Link to={`/companies/${company.handle}`} key={company.handle}>
         <h3> {company.name} </h3>
         <p> {company.description} </p>
         <img

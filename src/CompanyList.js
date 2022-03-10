@@ -61,7 +61,7 @@ function CompanyList() {
       <div className="CompanyList-companies">
         {(companies.length > 0)
           ? companies.map(company => {
-            return <CompanyCard company={company} />
+            return <CompanyCard company={company} key={company.handle} />
           })
           : <p>No companies found</p>
         }

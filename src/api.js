@@ -45,17 +45,10 @@ class JoblyApi {
     return res.company;
   }
 
-
   /** Get list of companies. 
    * Can optionally provide search term on company name.
    */
 
-
-  // static async getCompanies() {
-  //   let res = await this.request(`companies`);
-  //   console.log("getCompanies(), res.companies =", res.companies);
-  //   return res.companies;
-  // }
   static async getCompanies(searchName) {
     console.log("getCompanies(), searchName = ", searchName);
     let nameFilter = (searchName) ? { name: searchName } : {};
@@ -73,6 +66,13 @@ class JoblyApi {
     let res = await this.request(`jobs`, titleFilter);
     return res.jobs;
   }
+
+  /** Get list of jobs from a single company */
+  static async getCompanyJobs(handle) {
+    let res = await this.request(`jobs`, { handle: handle });
+    return res.jobs;
+  }
+
 
 }
 
