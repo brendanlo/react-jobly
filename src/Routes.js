@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Homepage from './Homepage';
 import CompanyList from './CompanyList.js';
@@ -8,7 +8,6 @@ import JobList from './JobList';
 
 
 function Routes() {
-  // CR include redirect for no match
   return (
     <Switch>
       <Route exact path="/">
@@ -23,6 +22,7 @@ function Routes() {
       <Route exact path="/jobs">
         <JobList />
       </Route>
+      <Redirect to="/" />
     </Switch>
   );
 }

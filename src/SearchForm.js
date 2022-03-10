@@ -22,8 +22,7 @@ function SearchForm({ handleSearch }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    //CR trim will take care of extra spaces
-    handleSearch(searchTerm);
+    handleSearch(searchTerm.trim());
   }
 
   return (

@@ -18,17 +18,16 @@ import { Link } from 'react-router-dom';
  * 
  * CompanyList -> CompanyCard
  */
-
-//CR destructure company object
-function CompanyCard({ company }) {
+function CompanyCard({ company: { handle, name, description, logoUrl } }) {
+  console.log("CompanyCard, handle= ", handle)
   return (
     <div className='CompanyCard'>
-      <Link to={`/companies/${company.handle}`} key={company.handle}>
-        <h3> {company.name} </h3>
-        <p> {company.description} </p>
+      <Link to={`/companies/${handle}`} key={handle}>
+        <h3> {name} </h3>
+        <p> {description} </p>
         <img
-          src={process.env.PUBLIC_URL + company.logoUrl}
-          alt={company.name} />
+          src={process.env.PUBLIC_URL + logoUrl}
+          alt={name} />
       </Link>
     </div>
   );
