@@ -1,5 +1,17 @@
 import { useState } from "react";
 
+
+
+/** Displays and handles inputs for the search form
+ * 
+ * Props:
+ * - handlesearch: function that describes how to handle the search term
+ * 
+ * State:
+ * - searchTerm: string that is the search term
+ * 
+ * (CompanyList, JobList) -> SearchForm
+ */
 function SearchForm({ handleSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 

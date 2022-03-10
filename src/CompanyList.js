@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import JoblyApi from "./api";
 import SearchForm from './SearchForm';
+import CompanyCard from "./CompanyCard";
 
 /** CompanyList displays the list of all companies or a filtered list of 
  * companies if a company search has been made.
@@ -19,8 +19,9 @@ import SearchForm from './SearchForm';
       "logoUrl": "/logos/logo3.png"
     },
     ...]
+ * - isLoading: boolean representing whether the company data has been loaded
  * 
- * - isSearching: boolean representing whether a search has been made or not
+ * Routes -> CompanyList -> (CompanyCard, SearchForm)
  */
 
 function CompanyList() {
@@ -60,15 +61,7 @@ function CompanyList() {
       <div className="CompanyList-companies">
         {(companies.length > 0)
           ? companies.map(company => {
-            return (
-              <Link to={`/company/'${company.name}>`} key={company.handle}>
-                <h3> {company.name} </h3>
-                <p> {company.description} </p>
-                <img
-                  src={process.env.PUBLIC_URL + company.logoUrl}
-                  alt={company.name} />
-              </Link>
-            )
+            return <CompanyCard company={company} />
           })
           : <p>No companies found</p>
         }
