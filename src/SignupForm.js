@@ -13,7 +13,7 @@ import { Redirect } from "react-router-dom";
  * Routes -> SignupForm
  */
 
-function SignupForm({ createUserAndAuth }) {
+function SignupForm({ signUpUser }) {
   // NOTE set defaults to "" once out of development
   const defaults = {
     username: "newest",
@@ -35,7 +35,7 @@ function SignupForm({ createUserAndAuth }) {
   // CR error handling, may pass object
   function handleSubmit(evt) {
     evt.preventDefault();
-    createUserAndAuth(
+    signUpUser(
       formData.username,
       formData.password,
       formData.firstName,

@@ -1,9 +1,17 @@
 import { useContext, useState } from "react";
 import UserContext from "./userContext";
 
-//CR add context
 /** Renders the profile form that allows a user to edit some of their user
  * details.
+ * 
+ * Context:
+ * - currentUser: object containing user data
+ *     {applications: [1,2,3] // array of job id's
+        email: "email@mail.com"
+        firstName: "john"
+        isAdmin: false // boolean representing whether they're admin or not
+        lastName: "doe"
+        username: "username123"}
  * 
  * Props:
  * - changeUserData: function that changes the user data

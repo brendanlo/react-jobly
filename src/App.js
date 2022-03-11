@@ -5,21 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import JoblyApi from './api';
 import UserContext from './userContext';
+import jwt_decode from "jwt-decode";
+
 
 
 //CR docstring
 function App() {
-
-  //CR initial value null
-  const userDefault = {
-    username: "",
-    firstName: "",
-    lastName: "",
-    isAdmin: "",
-    applications: []
-  }
-  const [currentUser, setCurrentUser] = useState(userDefault);
-  const [token, setToken] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   console.log("<App> currentUser =", currentUser);
 
@@ -28,24 +21,21 @@ function App() {
    */
   useEffect(function updateUserWhenTokenChanges() {
     async function updateUser() {
-      const newUserData = await JoblyApi.getUserData(currentUser.username);
-
-      console.log("updateUser(), newUserData = ", newUserData);
+      const decode = jwt_decode(token);
+      const newUserData = await JoblyApi.getUserData(decode.username);
 
       setCurrentUser(newUserData);
     }
-    // CR update this for null initial value -> pull jwt decode to pull the username out of the token 
-    // jwt-decode 
-    if (currentUser.username !== userDefault.username) {
+    if (token) {
       updateUser()
     }
-  }, [token, currentUser.username, userDefault.username]);
+  }, [token]);
 
   /** sets the user and token states to null, effectively removing access to
    * the user
   */
   function logOutUser() {
-    setCurrentUser(userDefault); // CR set to null
+    setCurrentUser(null);
     setToken(null);
   }
 
@@ -54,25 +44,16 @@ function App() {
     // get and set token
     const newToken = await JoblyApi.getUserToken(username, password);
     setToken(newToken);
-
-    // set username
-    setCurrentUser({ username: username }); //CR not needed when token decoding
   }
 
   /** makes a new user and updates the user and token values
    */
-  // CR signup function
-  async function createUserAndAuth(
+  async function signUpUser(
     username, password, firstName, lastName, email) {
     //get & set token
     const newToken = await JoblyApi.createUser(
       username, password, firstName, lastName, email);
     setToken(newToken.token);
-
-    console.log("createUserAndAuth, newToken =", newToken);
-
-    // set username
-    setCurrentUser({ username: username }); //CR not needed
   }
 
   /** updates the current user data */
@@ -101,7 +82,7 @@ function App() {
           <Navigation logOutUser={logOutUser} />
           <Routes
             logInUser={logInUser}
-            createUserAndAuth={createUserAndAuth}
+            signUpUser={signUpUser}
             changeUserData={changeUserData}
             applytoJobAndUpdate={applytoJobAndUpdate} />
         </BrowserRouter>

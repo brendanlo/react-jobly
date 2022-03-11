@@ -9,15 +9,13 @@ function Homepage() {
   return (
     <div className="Homepage">
       <h1 >Jobly</h1>
-      {currentUser.username.length > 0 ||
-        <div>
+      {currentUser
+        ? <p>Welcome back <b>{currentUser.username}</b>!!</p>
+        : <div>
           <p>All the jobs in one, convenient place.</p>
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
         </div>}
-
-      {currentUser.username.length > 0 &&
-        <p>Welcome back <b>{currentUser.username}</b>!!</p>}
     </div >
   );
 }

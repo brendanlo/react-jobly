@@ -13,7 +13,7 @@ import ProfileForm from './ProfileForm';
 
 function Routes({
   logInUser,
-  createUserAndAuth,
+  signUpUser,
   changeUserData,
   applytoJobAndUpdate }) {
 
@@ -35,7 +35,7 @@ function Routes({
         <LoginForm logInUser={logInUser} />
       </Route>
       <Route exact path="/signup">
-        <SignupForm createUserAndAuth={createUserAndAuth} />
+        <SignupForm signUpUser={signUpUser} />
       </Route>
       <Route exact path="/profile">
         <ProfileForm changeUserData={changeUserData} />

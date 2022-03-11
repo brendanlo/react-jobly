@@ -2,15 +2,31 @@ import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "./userContext";
 
-//CR docstring - document context as well
+/** displays the navigation bar. View differs based on whether the user is
+ * logged in or not.
+ * 
+ * Context:
+ * * - currentUser: object containing user data
+ *     {applications: [1,2,3] // array of job id's
+        email: "email@mail.com"
+        firstName: "john"
+        isAdmin: false // boolean representing whether they're admin or not
+        lastName: "doe"
+        username: "username123"}
+ * 
+ * Props:
+ * - logOutUser: function that will set token and user data to null
+ * 
+ * App -> Navigation
+ */
+
 function Navigation({ logOutUser }) {
   const { currentUser } = useContext(UserContext);
   console.log("<Navigation>");
 
-  // CR can change to (currentUser) on line 13 when change to token logic
   return (
     <nav className='Navigation'>
-      {(currentUser.username.length > 0)
+      {(currentUser)
         ? (
           <div className="Navigation-loggedIn">
             <NavLink exact to='/'> Jobly </NavLink>
