@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
  * 
  * State:
  * - formData: object containing form fields and data
+ * - doRedirect: boolean representing whether or not to redirect to another page
  * 
  * Routes -> SignupForm
  */
@@ -24,12 +25,13 @@ function SignupForm({ createUserAndAuth }) {
   const [formData, setFormData] = useState(defaults);
   const [doRedirect, setDoRedirect] = useState(false);
 
-
+  // keeps input data updated
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(data => ({ ...data, [name]: value }));
   }
 
+  // handles form submit and flagging for redirect
   function handleSubmit(evt) {
     evt.preventDefault();
     createUserAndAuth(

@@ -132,10 +132,13 @@ class JoblyApi {
     return JoblyApi.token;
   }
 
-  /** applies to a job */
+  /** applies to a job & returns an object of {applied: jobId}*/
   static async applyToJob(username, id) {
     const data = {};
-    let appliedRes = await this.request(`users/${username}/jobs/${id}`, data, "post");
+    let appliedRes = await this.request(
+      `users/${username}/jobs/${id}`,
+      data,
+      "post");
 
     return appliedRes;
   }

@@ -1,17 +1,31 @@
 import { useContext, useState } from "react";
 import UserContext from "./userContext";
 
+
+/** Renders the profile form that allows a user to edit some of their user
+ * details.
+ * 
+ * Props:
+ * - changeUserData: function that changes the user data
+ * 
+ * State:
+ * - formData: object containing the form data fields
+ * 
+ * App -> ProfileForm
+ */
 function ProfileForm({ changeUserData }) {
   const { currentUser } = useContext(UserContext);
   console.log("<ProfileForm>");
 
   const [formData, setFormData] = useState(currentUser);
 
+  // handles keeping inputs up to date
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(data => ({ ...data, [name]: value }));
   }
 
+  // handles submitting form
   function handleSubmit(evt) {
     evt.preventDefault();
     changeUserData(
@@ -33,7 +47,8 @@ function ProfileForm({ changeUserData }) {
           id="username"
           name="username"
           value={formData.username}
-          onChange={handleChange} />
+          onChange={handleChange}
+          disabled />
 
         <label htmlFor="firstName">First Name</label>
         <input

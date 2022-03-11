@@ -4,10 +4,11 @@ import { Redirect } from "react-router-dom";
 /** Shows login form and handles inputs
  * 
  * Props:
- * - handleLogin(): function that handles authenticating user
+ * - logInUser(): function that handles authenticating user
  * 
  * State:
  * - formData: object containing form fields and data
+ * - doRedirect: boolean, represents whether we should redirect to another page
  * 
  * Routes -> LoginForm
  */
@@ -18,6 +19,7 @@ function LoginForm({ logInUser }) {
   const [formData, setFormData] = useState(defaults);
   const [doRedirect, setDoRedirect] = useState(false);
 
+  // keeps input values up to date
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -25,6 +27,7 @@ function LoginForm({ logInUser }) {
     setFormData(data => ({ ...data, [name]: value }));
   }
 
+  // handles submitting the form and flagging for a redirect once done
   function handleSubmit(evt) {
     evt.preventDefault();
     logInUser(formData.username, formData.password);

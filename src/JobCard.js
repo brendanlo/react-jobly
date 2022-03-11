@@ -19,12 +19,15 @@ import UserContext from "./userContext";
  * (JobList, CompanyDetail) -> JobCard
  */
 
-function JobCard({ job: { title, companyName, salary, equity, id }, applytoJobAndUpdate }) {
+function JobCard({
+  job: { title, companyName, salary, equity, id },
+  applytoJobAndUpdate }) {
   const { currentUser } = useContext(UserContext);
-  console.log("<JobCard> currentUser = ", currentUser);
-  console.log("<JobCard> currentUser.username = ", currentUser.username);
 
-  const hasApplied = currentUser.applications.some(jobId => jobId === id);
+  function hasApplied() {
+    const apps = currentUser.applications;
+    return apps.includes(id);
+  }
 
   function handleClick() {
     applytoJobAndUpdate(currentUser.username, id);
@@ -36,9 +39,9 @@ function JobCard({ job: { title, companyName, salary, equity, id }, applytoJobAn
       <p> {companyName}</p>
       <div><small>Salary: {salary}</small></div>
       <div><small>Equity: {equity}</small></div>
-      <button
-        {...hasApplied && "disabled"}
-        onClick={handleClick}> Apply </button>
+      {/* <button
+        {hasApplied && "disabled"}
+        onClick={handleClick}> Apply </button> */}
     </div>
   );
 }
