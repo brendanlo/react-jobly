@@ -32,6 +32,7 @@ function SignupForm({ createUserAndAuth }) {
   }
 
   // handles form submit and flagging for redirect
+  // CR error handling, may pass object
   function handleSubmit(evt) {
     evt.preventDefault();
     createUserAndAuth(

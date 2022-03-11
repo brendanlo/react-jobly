@@ -7,9 +7,10 @@ import JoblyApi from './api';
 import UserContext from './userContext';
 
 
-
+//CR docstring
 function App() {
 
+  //CR initial value null
   const userDefault = {
     username: "",
     firstName: "",
@@ -33,6 +34,8 @@ function App() {
 
       setCurrentUser(newUserData);
     }
+    // CR update this for null initial value -> pull jwt decode to pull the username out of the token 
+    // jwt-decode 
     if (currentUser.username !== userDefault.username) {
       updateUser()
     }
@@ -42,7 +45,7 @@ function App() {
    * the user
   */
   function logOutUser() {
-    setCurrentUser(userDefault);
+    setCurrentUser(userDefault); // CR set to null
     setToken(null);
   }
 
@@ -53,11 +56,12 @@ function App() {
     setToken(newToken);
 
     // set username
-    setCurrentUser({ username: username });
+    setCurrentUser({ username: username }); //CR not needed when token decoding
   }
 
   /** makes a new user and updates the user and token values
    */
+  // CR signup function
   async function createUserAndAuth(
     username, password, firstName, lastName, email) {
     //get & set token
@@ -68,7 +72,7 @@ function App() {
     console.log("createUserAndAuth, newToken =", newToken);
 
     // set username
-    setCurrentUser({ username: username });
+    setCurrentUser({ username: username }); //CR not needed
   }
 
   /** updates the current user data */

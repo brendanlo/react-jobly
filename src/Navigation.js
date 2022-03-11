@@ -2,12 +2,12 @@ import { NavLink, Link } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "./userContext";
 
-
+//CR docstring - document context as well
 function Navigation({ logOutUser }) {
   const { currentUser } = useContext(UserContext);
   console.log("<Navigation>");
 
-
+  // CR can change to (currentUser) on line 13 when change to token logic
   return (
     <nav className='Navigation'>
       {(currentUser.username.length > 0)

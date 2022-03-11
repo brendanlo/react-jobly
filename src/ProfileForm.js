@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import UserContext from "./userContext";
 
-
+//CR add context
 /** Renders the profile form that allows a user to edit some of their user
  * details.
  * 

@@ -23,11 +23,11 @@ function LoginForm({ logInUser }) {
   function handleChange(evt) {
     const { name, value } = evt.target;
 
-    // QQ why does the new object need to be wrapped in parentheses?
     setFormData(data => ({ ...data, [name]: value }));
   }
 
   // handles submitting the form and flagging for a redirect once done
+  //CR try catch. await the loginUser. possible alert component if time
   function handleSubmit(evt) {
     evt.preventDefault();
     logInUser(formData.username, formData.password);

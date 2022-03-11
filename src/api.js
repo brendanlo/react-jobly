@@ -72,9 +72,11 @@ class JoblyApi {
     return res.jobs;
   }
 
+
   /** Logging in a user. Returns the token and udpates the static JoblyApi.token
    * to that user's token.
    */
+  // CR call fn login
   static async getUserToken(username, password) {
     // get token
     let tokenRes = await this.request('auth/token', {
