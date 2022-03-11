@@ -36,13 +36,13 @@ function App() {
     if (currentUser.username !== userDefault.username) {
       updateUser()
     }
-  }, [token, currentUser.username]);
+  }, [token, currentUser.username, userDefault.username]);
 
   /** sets the user and token states to null, effectively removing access to
    * the user
   */
   function logOutUser() {
-    setCurrentUser(null);
+    setCurrentUser(userDefault);
     setToken(null);
   }
 
@@ -53,7 +53,7 @@ function App() {
     setToken(newToken);
 
     // set username
-    setCurrentUser({ ...currentUser, username: username });
+    setCurrentUser({ username: username });
   }
 
   /** makes a new user and updates the user and token values
@@ -68,7 +68,17 @@ function App() {
     console.log("createUserAndAuth, newToken =", newToken);
 
     // set username
-    setCurrentUser({ ...currentUser, username: username });
+    setCurrentUser({ username: username });
+  }
+
+  /** updates the current user data */
+  async function changeUserData(username, firstName, lastName, email) {
+    const updatedUser = await JoblyApi.updateUserData(
+      username,
+      firstName,
+      lastName,
+      email);
+    setCurrentUser(updatedUser);
   }
 
 
@@ -78,7 +88,10 @@ function App() {
       <UserContext.Provider value={{ currentUser }}>
         <BrowserRouter>
           <Navigation logOutUser={logOutUser} />
-          <Routes logInUser={logInUser} createUserAndAuth={createUserAndAuth} />
+          <Routes
+            logInUser={logInUser}
+            createUserAndAuth={createUserAndAuth}
+            changeUserData={changeUserData} />
         </BrowserRouter>
       </UserContext.Provider>
     </div>

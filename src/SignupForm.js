@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 /** Shows signup form and handles inputs
  * 
@@ -21,6 +22,8 @@ function SignupForm({ createUserAndAuth }) {
     email: "newest@mail.com"
   };
   const [formData, setFormData] = useState(defaults);
+  const [doRedirect, setDoRedirect] = useState(false);
+
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -35,7 +38,11 @@ function SignupForm({ createUserAndAuth }) {
       formData.firstName,
       formData.lastName,
       formData.email);
+
+    setDoRedirect(true);
   }
+
+  if (doRedirect) return <Redirect to="/companies" />
 
   return (
     <div className="SignupForm">

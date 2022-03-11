@@ -11,7 +11,7 @@ import ProfileForm from './ProfileForm';
 
 
 
-function Routes({ logInUser, createUserAndAuth }) {
+function Routes({ logInUser, createUserAndAuth, changeUserData }) {
   return (
     <Switch>
       <Route exact path="/">
@@ -33,7 +33,7 @@ function Routes({ logInUser, createUserAndAuth }) {
         <SignupForm createUserAndAuth={createUserAndAuth} />
       </Route>
       <Route exact path="/profile">
-        <ProfileForm />
+        <ProfileForm changeUserData={changeUserData} />
       </Route>
       <Redirect to="/" />
     </Switch>

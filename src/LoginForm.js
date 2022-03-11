@@ -16,6 +16,7 @@ function LoginForm({ logInUser }) {
   // NOTE set defaults to "" once out of development
   const defaults = { username: "testadmin", password: "password" };
   const [formData, setFormData] = useState(defaults);
+  const [doRedirect, setDoRedirect] = useState(false);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -27,8 +28,10 @@ function LoginForm({ logInUser }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     logInUser(formData.username, formData.password);
-    return <Redirect to="/companies"></Redirect>
+    setDoRedirect(true);
   }
+
+  if (doRedirect) return <Redirect to="/companies" />
 
   return (
     <div className="LoginForm">

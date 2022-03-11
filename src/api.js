@@ -72,8 +72,8 @@ class JoblyApi {
     return res.jobs;
   }
 
-  /** Logging in a user. Returns an object of the following:
-   * {token, user}
+  /** Logging in a user. Returns the token and udpates the static JoblyApi.token
+   * to that user's token.
    */
   static async getUserToken(username, password) {
     // get token
@@ -88,6 +88,7 @@ class JoblyApi {
     return JoblyApi.token;
   }
 
+  /** Retrieves user details given a username string. Returns a user object */
   static async getUserData(username) {
     // get user data
     console.log("getUserData, JoblyApi.token =", JoblyApi.token);
@@ -97,6 +98,23 @@ class JoblyApi {
     return res.user;
   }
 
+  /** Updates the firstName, lastName, or email of the current user. Returns
+   * the user object
+   */
+  static async updateUserData(username, firstName, lastName, email) {
+    const updateData = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email
+    }
+    let res = await this.request(`users/${username}`, updateData, "patch");
+
+    return res.user;
+  }
+
+  /** Creates a user given username, password, firstName, lastName, and email.
+   * Sets the static JoblyApi.token to the retrieved token and returns it.
+   */
   static async createUser(username, password, firstName, lastName, email) {
     console.log("createUser, username =", username);
 
