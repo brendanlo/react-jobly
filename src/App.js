@@ -33,7 +33,9 @@ function App() {
 
       setCurrentUser(newUserData);
     }
-    updateUser()
+    if (currentUser.username !== userDefault.username) {
+      updateUser()
+    }
   }, [token, currentUser.username]);
 
   /** sets the user and token states to null, effectively removing access to
@@ -46,15 +48,28 @@ function App() {
 
   /** handles login. Updates currentUser and token with data from the server */
   async function logInUser(username, password) {
+    // get and set token
     const newToken = await JoblyApi.getUserToken(username, password);
-
-    // NOTE unsure if need this:
-    setCurrentUser({ ...currentUser, username: username });
-
     setToken(newToken);
+
+    // set username
+    setCurrentUser({ ...currentUser, username: username });
   }
 
+  /** makes a new user and updates the user and token values
+   */
+  async function createUserAndAuth(
+    username, password, firstName, lastName, email) {
+    //get & set token
+    const newToken = await JoblyApi.createUser(
+      username, password, firstName, lastName, email);
+    setToken(newToken.token);
 
+    console.log("createUserAndAuth, newToken =", newToken);
+
+    // set username
+    setCurrentUser({ ...currentUser, username: username });
+  }
 
 
 
@@ -63,7 +78,7 @@ function App() {
       <UserContext.Provider value={{ currentUser }}>
         <BrowserRouter>
           <Navigation logOutUser={logOutUser} />
-          <Routes logInUser={logInUser} />
+          <Routes logInUser={logInUser} createUserAndAuth={createUserAndAuth} />
         </BrowserRouter>
       </UserContext.Provider>
     </div>

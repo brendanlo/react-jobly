@@ -11,7 +11,7 @@ import { useState } from "react";
  * Routes -> SignupForm
  */
 
-function SignupForm({ createNewUser }) {
+function SignupForm({ createUserAndAuth }) {
   // NOTE set defaults to "" once out of development
   const defaults = {
     username: "newest",
@@ -29,11 +29,18 @@ function SignupForm({ createNewUser }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    createNewUser(formData);
+    createUserAndAuth(
+      formData.username,
+      formData.password,
+      formData.firstName,
+      formData.lastName,
+      formData.email);
   }
+
   return (
     <div className="SignupForm">
       <h1>Sign up</h1>
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -42,6 +49,7 @@ function SignupForm({ createNewUser }) {
           name="username"
           value={formData.username}
           onChange={handleChange} />
+
         <label htmlFor="password">Password</label>
         <input
           type="text"
@@ -49,26 +57,29 @@ function SignupForm({ createNewUser }) {
           name="password"
           value={formData.password}
           onChange={handleChange} />
+
         <label htmlFor="firstName">First Name</label>
         <input
           type="text"
           id="firstName"
           name="firstName"
-          value={formData.password}
+          value={formData.firstName}
           onChange={handleChange} />
+
         <label htmlFor="lastName">Last Name</label>
         <input
           type="text"
           id="lastName"
           name="lastName"
-          value={formData.password}
+          value={formData.lastName}
           onChange={handleChange} />
+
         <label htmlFor="email">Email</label>
         <input
           type="text"
           id="email"
           name="email"
-          value={formData.password}
+          value={formData.email}
           onChange={handleChange} />
         <button>Submit</button>
       </form>

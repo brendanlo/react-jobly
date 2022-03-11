@@ -82,8 +82,6 @@ class JoblyApi {
       password: password
     }, "post");
 
-    console.log("logInUser, tokenRes=", tokenRes);
-
     JoblyApi.token = tokenRes.token;
     console.log("logInUser, JoblyApi.token=", JoblyApi.token);
 
@@ -99,13 +97,21 @@ class JoblyApi {
     return res.user;
   }
 
-  static async getUserData(username) {
-    // get user data
-    console.log("getUserData, JoblyApi.token =", JoblyApi.token);
-    let res = await this.request(`users/${username}`);
-    console.log("getUserData, res=", res);
+  static async createUser(username, password, firstName, lastName, email) {
+    console.log("createUser, username =", username);
 
-    return res.user;
+    let tokenRes = await this.request('auth/register', {
+      "username": username,
+      "password": password,
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email
+    }, "post");
+
+    console.log("createUser, tokenRes=", tokenRes);
+    JoblyApi.token = tokenRes.token;
+
+    return JoblyApi.token;
   }
 }
 

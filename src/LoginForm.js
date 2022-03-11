@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 /** Shows login form and handles inputs
  * 
@@ -16,8 +17,6 @@ function LoginForm({ logInUser }) {
   const defaults = { username: "testadmin", password: "password" };
   const [formData, setFormData] = useState(defaults);
 
-  // QQ does it make sense to useEffect to redirect when formData changes? it should be based on Context <user>
-
   function handleChange(evt) {
     const { name, value } = evt.target;
 
@@ -28,6 +27,7 @@ function LoginForm({ logInUser }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     logInUser(formData.username, formData.password);
+    return <Redirect to="/companies"></Redirect>
   }
 
   return (
