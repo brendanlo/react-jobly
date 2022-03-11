@@ -61,7 +61,6 @@ class JoblyApi {
    * */
 
   static async getJobs(searchTitle) {
-    console.log("getJobs(), searchTitle = ", searchTitle);
     const titleFilter = (searchTitle) ? { title: searchTitle } : {};
     let res = await this.request(`jobs`, titleFilter);
     return res.jobs;
@@ -73,8 +72,43 @@ class JoblyApi {
     return res.jobs;
   }
 
+  /** Logging in a user. Returns an object of the following:
+   * {token, user}
+   */
+  static async getUserToken(username, password) {
+    // get token
+    let tokenRes = await this.request('auth/token', {
+      username: username,
+      password: password
+    }, "post");
 
+    console.log("logInUser, tokenRes=", tokenRes);
+
+    JoblyApi.token = tokenRes.token;
+    console.log("logInUser, JoblyApi.token=", JoblyApi.token);
+
+    return JoblyApi.token;
+  }
+
+  static async getUserData(username) {
+    // get user data
+    console.log("getUserData, JoblyApi.token =", JoblyApi.token);
+    let res = await this.request(`users/${username}`);
+    console.log("getUserData, res=", res);
+
+    return res.user;
+  }
+
+  static async getUserData(username) {
+    // get user data
+    console.log("getUserData, JoblyApi.token =", JoblyApi.token);
+    let res = await this.request(`users/${username}`);
+    console.log("getUserData, res=", res);
+
+    return res.user;
+  }
 }
+
 
 
 export default JoblyApi;
