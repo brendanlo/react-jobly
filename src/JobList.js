@@ -25,7 +25,7 @@ import JobCard from "./JobCard";
  * Routes -> JobList -> (JobCard, SearchForm)
  */
 
-function JobList() {
+function JobList({ applytoJobAndUpdate }) {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   console.log("<JobList>", jobs, isLoading);
@@ -54,7 +54,11 @@ function JobList() {
       <div className="JobList-search">
         <SearchForm handleSearch={handleSearch} />
       </div>
-      <div> {jobs.map(job => <JobCard job={job} key={job.id} />)} </div>
+      <div> {jobs.map(job =>
+        <JobCard
+          job={job}
+          key={job.id}
+          applytoJobAndUpdate={applytoJobAndUpdate} />)} </div>
     </div>
   );
 }

@@ -11,7 +11,12 @@ import ProfileForm from './ProfileForm';
 
 
 
-function Routes({ logInUser, createUserAndAuth, changeUserData }) {
+function Routes({
+  logInUser,
+  createUserAndAuth,
+  changeUserData,
+  applytoJobAndUpdate }) {
+
   return (
     <Switch>
       <Route exact path="/">
@@ -24,7 +29,7 @@ function Routes({ logInUser, createUserAndAuth, changeUserData }) {
         <CompanyDetail />
       </Route>
       <Route exact path="/jobs">
-        <JobList />
+        <JobList applytoJobAndUpdate={applytoJobAndUpdate} />
       </Route>
       <Route exact path="/login">
         <LoginForm logInUser={logInUser} />

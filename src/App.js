@@ -15,7 +15,7 @@ function App() {
     firstName: "",
     lastName: "",
     isAdmin: "",
-    jobs: ""
+    applications: []
   }
   const [currentUser, setCurrentUser] = useState(userDefault);
   const [token, setToken] = useState("");
@@ -81,6 +81,13 @@ function App() {
     setCurrentUser(updatedUser);
   }
 
+  /** applies to a job and updates the user state */
+  async function applytoJobAndUpdate(username, id) {
+    await JoblyApi.applyToJob(username, id);
+    setCurrentUser(user => ({ ...user }));
+  }
+
+
 
 
   return (
@@ -91,7 +98,8 @@ function App() {
           <Routes
             logInUser={logInUser}
             createUserAndAuth={createUserAndAuth}
-            changeUserData={changeUserData} />
+            changeUserData={changeUserData}
+            applytoJobAndUpdate={applytoJobAndUpdate} />
         </BrowserRouter>
       </UserContext.Provider>
     </div>

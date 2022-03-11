@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import UserContext from "./userContext";
 
 
 /** Displays information about a job
@@ -17,13 +19,26 @@
  * (JobList, CompanyDetail) -> JobCard
  */
 
-function JobCard({ job: { title, companyName, salary, equity } }) {
+function JobCard({ job: { title, companyName, salary, equity, id }, applytoJobAndUpdate }) {
+  const { currentUser } = useContext(UserContext);
+  console.log("<JobCard> currentUser = ", currentUser);
+  console.log("<JobCard> currentUser.username = ", currentUser.username);
+
+  const hasApplied = currentUser.applications.some(jobId => jobId === id);
+
+  function handleClick() {
+    applytoJobAndUpdate(currentUser.username, id);
+  }
+
   return (
     <div className="JobCard">
       <h2> {title}</h2>
       <p> {companyName}</p>
       <div><small>Salary: {salary}</small></div>
       <div><small>Equity: {equity}</small></div>
+      <button
+        {...hasApplied && "disabled"}
+        onClick={handleClick}> Apply </button>
     </div>
   );
 }
