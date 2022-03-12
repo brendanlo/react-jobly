@@ -11,7 +11,8 @@ import jwt_decode from "jwt-decode";
 
 //CR docstring
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  const localUser = JSON.parse(localStorage.getItem("currentUser"));
+  const [currentUser, setCurrentUser] = useState(localUser);
   const [token, setToken] = useState(null);
 
   console.log("<App> currentUser =", currentUser);
@@ -23,6 +24,8 @@ function App() {
     async function updateUser() {
       const decode = jwt_decode(token);
       const newUserData = await JoblyApi.getUserData(decode.username);
+      const newUserDataJSON = JSON.stringify(newUserData);
+      localStorage.setItem("currentUser", newUserDataJSON);
 
       setCurrentUser(newUserData);
     }
@@ -37,6 +40,7 @@ function App() {
   function logOutUser() {
     setCurrentUser(null);
     setToken(null);
+    localStorage.removeItem("currentUser");
   }
 
   /** handles login. Updates currentUser and token with data from the server */
