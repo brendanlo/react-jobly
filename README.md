@@ -55,9 +55,4 @@ The following diagram lays out the various React components, including state and
 ![React_-_Jobly__keep___Online_Whiteboard_for_Visual_Collaboration](https://user-images.githubusercontent.com/51941197/168175613-65818aae-30cb-4ac2-a2b6-158db469aac5.png)
 
 
-### Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 
