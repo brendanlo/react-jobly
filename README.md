@@ -6,7 +6,7 @@ The Jobly frontend is built using [React](https://reactjs.org/) and bootstrapped
 
 The current iteration has barebones styling, but includes most of the functionality for the site.
 
-<img src='https://user-images.githubusercontent.com/51941197/168389507-149e20af-5e59-4334-927f-6539cd2526ef.png' width="300px"> <img src='https://user-images.githubusercontent.com/51941197/168389544-0068ab06-71b7-44d9-8976-89b00e8d51e8.png' width="150px">
+<img src='https://user-images.githubusercontent.com/51941197/168389507-149e20af-5e59-4334-927f-6539cd2526ef.png' width="300px"> <img src='https://user-images.githubusercontent.com/51941197/168389993-116cba9f-777c-41d6-ac51-7db8eefc2104.png' width="150px">
 
 ## Getting Started
 Dependencies:
