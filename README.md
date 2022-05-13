@@ -2,7 +2,7 @@
 Jobly is a job board for viewing job postings and the companies that are posting them. 
 
 ## Description
-The Jobly frontend is built using [React](https://reactjs.org/) and bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The primary purpose of the app is to explore designing and implementing reusable React components.
+The Jobly frontend is built using [React](https://reactjs.org/) and bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The primary purpose of the app is to explore designing and implementing reusable React components. The backend is built in Express, which can be viewed at this [github repo](https://github.com/brendanlo/express-jobly).
 
 The current iteration has barebones styling, but includes most of the simple functionality for the site.
 
