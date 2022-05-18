@@ -57,7 +57,7 @@ function CompanyList() {
 
   return (
     <div className="CompanyList">
-      <h1> Companies List!</h1>
+      <h1> Companies</h1>
       <div className="CompanyList-search">
         <SearchForm handleSearch={handleSearch} />
       </div>

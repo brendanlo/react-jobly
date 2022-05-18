@@ -11,3 +11,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.Navigation {
+    padding:10px;
+    background-color: rgb(255, 205, 113);
+    display: block;
+}
+
+.Navigation-brand {
+    text-align: left;
+}
+
+.Navigation-right {
+    text-align: right;
+}
+
+.JobList-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.JobList-search {
+    margin:20px;
+}
+
+.JobCard {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+}
+
+.CompanyList-companies {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.CompanyList-search {
+    margin:20px;
+}
+.CompanyCard {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+}
+
+.CompanyList img {
+    height:50px;
+}

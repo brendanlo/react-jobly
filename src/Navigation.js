@@ -29,16 +29,20 @@ function Navigation({ logOutUser }) {
       {(currentUser)
         ? (
           <div className="Navigation-loggedIn">
-            <NavLink exact to='/'> Jobly </NavLink>
-            <NavLink exact to='/companies'> Companies </NavLink>
-            <NavLink exact to='/jobs'> Jobs </NavLink>
-            <NavLink exact to='/profile'>Profile</NavLink>
-            <Link to='/' onClick={logOutUser}>{`Log Out ${currentUser.username}`} </Link>
+            <NavLink exact to='/' className='Navigation-brand'> Jobly </NavLink>
+            <div className="Navigation-right">
+              <NavLink exact to='/companies'> Companies </NavLink>
+              <NavLink exact to='/jobs'> Jobs </NavLink>
+              <NavLink exact to='/profile'>Profile</NavLink>
+              <Link to='/' onClick={logOutUser}>{`Log Out ${currentUser.username}`} </Link>
+            </div>
           </div>)
         : (<div className="Navigation-loggedOut">
-          <NavLink exact to='/'> Jobly </NavLink>
-          <NavLink exact to='/login'> Log In </NavLink>
-          <NavLink exact to='/signup'> Sign Up </NavLink>
+            <NavLink exact to='/' className="Navigation-brand"> Jobly </NavLink>
+            <div className="Navigation-right">
+              <NavLink exact to='/login'> Log In </NavLink>
+              <NavLink exact to='/signup'> Sign Up </NavLink>
+            </div>
         </div>)
       }
     </nav>

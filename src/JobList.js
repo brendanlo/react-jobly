@@ -50,11 +50,11 @@ function JobList({ applytoJobAndUpdate }) {
 
   return (
     <div className="JobList">
-      <h1>Jobs List! </h1>
+      <h1>Available Jobs </h1>
       <div className="JobList-search">
         <SearchForm handleSearch={handleSearch} />
       </div>
-      <div> {jobs.map(job =>
+      <div className="JobList-container"> {jobs.map(job =>
         <JobCard
           job={job}
           key={job.id}
