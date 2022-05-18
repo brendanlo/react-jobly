@@ -1,12 +1,34 @@
-# Getting Started with Create React App
+# Jobly Frontend
+Jobly is a job board for viewing job postings and the companies that are posting them. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+The Jobly frontend is built using [React](https://reactjs.org/) and bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The primary purpose of the app is to explore designing and implementing reusable React components. The backend is built in Express, which can be viewed at this [github repo](https://github.com/brendanlo/express-jobly).
+
+The current iteration has barebones styling, but includes most of the simple functionality for the site.
+
+<img src='https://user-images.githubusercontent.com/51941197/168389507-149e20af-5e59-4334-927f-6539cd2526ef.png' width="300px"> <img src='https://user-images.githubusercontent.com/51941197/168389993-116cba9f-777c-41d6-ac51-7db8eefc2104.png' width="300px">
+
+## Getting Started
+Dependencies:
+* @testing-library/jest-dom@5.16.2
+* @testing-library/react@12.1.3
+* @testing-library/user-event@13.5.0
+* jwt-decode@3.1.2
+* react-dom@17.0.2
+* react-router-dom@5.2.0
+* react-scripts@5.0.0
+* react@17.0.2
+* web-vitals@2.1.4
+
+To install dependencies:
+
+    npm install
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+    npm start
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,12 +36,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+    npm test
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+    npm run build
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,42 +51,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+    
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Component Diagram
+The following diagram lays out the various React components, including state and functions used within
+![React_-_Jobly__keep___Online_Whiteboard_for_Visual_Collaboration](https://user-images.githubusercontent.com/51941197/168175613-65818aae-30cb-4ac2-a2b6-158db469aac5.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
